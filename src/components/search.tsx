@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from "next/link"
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Filter } from "lucide-react";
+import { Search, Filter, Star } from "lucide-react";
 
 export default function SearchBar() {
   const [query, setQuery] = useState('');
@@ -28,8 +29,12 @@ export default function SearchBar() {
           className="pl-10"
         />
       </div>
-
       <div className="flex flex-wrap gap-2 shrink-0">
+        <Link href="/favourites">
+          <Button variant="outline" size="icon">
+            <Star className="h-4 w-4"/>
+          </Button>
+        </Link>
         <Button variant="outline" size="icon" onClick={handleSearch}>
           <Filter className="h-4 w-4" />
         </Button>

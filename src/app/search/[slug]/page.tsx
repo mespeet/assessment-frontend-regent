@@ -9,8 +9,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import {
   Card,
-  CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -22,7 +20,8 @@ export default async function Search({ params }: { params: { slug: string } }) {
   
   if (!slug) return notFound();
 
-  let page: number = 1;
+//   let page: number = 1;
+    const page: number = 1;
 
   const result = await fetch(`https://api.themoviedb.org/3/search/movie?query=${slug}&page=${page}&api_key=${key}`);
   
@@ -45,7 +44,7 @@ export default async function Search({ params }: { params: { slug: string } }) {
               height={450}
               className="object-cover w-full h-full rounded-lg"
             />
-            <h2 className="text-lg font-bold">{_result.title}</h2>
+            <CardTitle className="text-lg font-bold">{_result.title}</CardTitle>
           </CardHeader>
           <CardFooter>
             <p className="text-accent">{_result.release_date}</p>
