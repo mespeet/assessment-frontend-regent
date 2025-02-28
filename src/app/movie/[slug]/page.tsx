@@ -45,12 +45,17 @@ export default async function Movie({ params }: { params: { slug: string } }) {
                 <Badge>{Math.round(data.vote_average * 10)}%</Badge>
                 <CardTitle className="font-bold text-lg flex justify-between">{data.title}</CardTitle>
                 <p className="font-light text-accent italic">{data.release_date}</p>
-                <h3 className="font-semibold">Overview</h3>
-                <p className="text-accent">{data.overview}</p>
-                <div className="flex flex-wrap gap-2">
-                {data.genres.map((genre: Genre) => (
-                    <Badge key={genre.id}>{genre.name}</Badge>
-                ))}
+                <div className="flex flex-col gap-1">
+                    <h3 className="font-semibold">Overview</h3>
+                    <p className="text-accent">{data.overview}</p>
+                </div>
+                <div className="flex flex-col gap-1">
+                    <h3 className="font-semibold">Genres</h3>
+                    <div className="flex flex-wrap gap-2">
+                        {data.genres.map((genre: Genre) => (
+                            <Badge key={genre.id}>{genre.name}</Badge>
+                        ))}
+                    </div>
                 </div>
             </div>
         </CardHeader>
